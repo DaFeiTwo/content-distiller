@@ -35,6 +35,8 @@ class Config:
     DEFAULT_MODEL = "qwen"  # qwen 或 deepseek
     QWEN_API_BASE = "https://dashscope.aliyuncs.com/compatible-mode/v1"
     QWEN_MODEL = "qwen-plus"
+    DEEPSEEK_API_BASE = "https://api.deepseek.com"
+    DEEPSEEK_MODEL = "deepseek-chat"
     
     @classmethod
     def validate(cls):

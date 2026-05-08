@@ -23,8 +23,11 @@ class LLMClient:
             )
             self.model_name = Config.QWEN_MODEL
         elif model == "deepseek":
-            # DeepSeek 配置（如果需要）
-            raise NotImplementedError("DeepSeek 暂未实现")
+            self.client = OpenAI(
+                api_key=Config.DEEPSEEK_API_KEY,
+                base_url=Config.DEEPSEEK_API_BASE
+            )
+            self.model_name = Config.DEEPSEEK_MODEL
         else:
             raise ValueError(f"不支持的模型: {model}")
     
