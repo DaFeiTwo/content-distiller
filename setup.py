@@ -22,8 +22,16 @@ def main():
     # 检查 .env 是否已存在
     env_file = Path(".env")
     if env_file.exists():
-        if not Confirm.ask("\n.env 文件已存在，是否覆盖？", default=False):
-            console.print("[yellow]配置已取消[/yellow]")
+        console.print("\n[yellow].env 文件已存在[/yellow]")
+        console.print("你可以：")
+        console.print("  1. 直接编辑 .env 文件修改配置")
+        console.print("  2. 运行 [cyan]python distill.py[/cyan] 开始使用")
+        console.print("  3. 删除 .env 后重新运行本向导")
+        
+        if not Confirm.ask("\n是否继续并覆盖现有配置？", default=False):
+            console.print("[green]保持现有配置不变[/green]")
+            console.print("\n当前配置文件：.env")
+            console.print("提示词配置：prompts.yaml")
             return
     
     console.print("\n[bold]步骤 1/4: 选择 LLM 服务[/bold]")
