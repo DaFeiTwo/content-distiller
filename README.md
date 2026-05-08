@@ -51,7 +51,7 @@
    - [通义千问 Qwen](https://dashscope.aliyun.com/) - 推荐
    - [DeepSeek](https://platform.deepseek.com/)
 
-### 一键配置（推荐）
+### 快速开始
 
 ```bash
 # 1. 克隆项目
@@ -61,15 +61,24 @@ cd content-distiller
 # 2. 安装依赖
 pip install -r requirements.txt
 
-# 3. 运行配置向导
-python setup.py
+# 3. 配置环境变量
+cp .env.example .env
+# 编辑 .env 文件，填入你的 API Key 和 RSS 链接
 ```
 
-配置向导会引导你完成：
-- ✅ 选择LLM服务
-- ✅ 输入API Key
-- ✅ 配置RSS链接
-- ✅ 设置输出目录
+**编辑 `.env` 文件：**
+
+```ini
+# API Keys（二选一或都配置）
+QWEN_API_KEY=your_qwen_key_here
+DEEPSEEK_API_KEY=your_deepseek_key_here
+
+# RSS Sources（支持多个，用逗号分隔）
+RSS_FEED_URLS=https://example.com/feed1.xml,https://example.com/feed2.xml
+
+# Output Settings
+OUTPUT_DIR=./output
+```
 
 ### 🎯 关键步骤：自定义配置
 
@@ -89,19 +98,6 @@ cat prompts.example.yaml
 3. **参数调优** - 调整 `temperature`、`max_tokens` 等
 
 > 💡 **重要提示**：默认配置是针对投资/育儿/个人成长类内容设计的。如果你的内容源不同（如技术博客、行业资讯），**必须修改** `prompts.yaml` 才能获得最佳效果！查看 `prompts.example.yaml` 了解技术类内容的配置示例。
-
-### 手动配置
-
-如果你喜欢手动配置：
-
-```bash
-# 1. 复制配置模板
-cp .env.example .env
-
-# 2. 编辑 .env 文件
-# QWEN_API_KEY=your_key_here
-# RSS_FEED_URLS=url1,url2,url3  # 支持多个RSS源，用逗号分隔
-```
 
 ### 开始蒸馏
 
