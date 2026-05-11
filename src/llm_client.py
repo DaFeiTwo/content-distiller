@@ -10,24 +10,30 @@ class LLMClient:
     def __init__(self, model: str = "qwen"):
         """
         初始化 LLM 客户端
-        
+
         Args:
-            model: 使用的模型，qwen 或 deepseek
+            model: 使用的模型，qwen、deepseek 或 mimo
         """
         self.model = model
-        
+
         if model == "qwen":
             self.client = OpenAI(
                 api_key=Config.QWEN_API_KEY,
-                base_url=Config.QWEN_API_BASE
+                base_url=Config.QWEN_API_BASE,
             )
             self.model_name = Config.QWEN_MODEL
         elif model == "deepseek":
             self.client = OpenAI(
                 api_key=Config.DEEPSEEK_API_KEY,
-                base_url=Config.DEEPSEEK_API_BASE
+                base_url=Config.DEEPSEEK_API_BASE,
             )
             self.model_name = Config.DEEPSEEK_MODEL
+        elif model == "mimo":
+            self.client = OpenAI(
+                api_key=Config.MIMO_API_KEY,
+                base_url=Config.MIMO_API_BASE,
+            )
+            self.model_name = Config.MIMO_MODEL
         else:
             raise ValueError(f"不支持的模型: {model}")
     

@@ -31,7 +31,7 @@ console = Console()
 )
 @click.option(
     "--model",
-    type=click.Choice(["qwen", "deepseek"]),
+    type=click.Choice(["qwen", "deepseek", "mimo"]),
     default="qwen",
     help="选择 LLM 模型"
 )

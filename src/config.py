@@ -13,6 +13,7 @@ class Config:
     # API Keys
     QWEN_API_KEY = os.getenv("QWEN_API_KEY", "")
     DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY", "")
+    MIMO_API_KEY = os.getenv("MIMO_API_KEY", "")
     
     # RSS Sources
     RSS_FEED_URLS = os.getenv("RSS_FEED_URLS", "")
@@ -37,14 +38,17 @@ class Config:
     QWEN_MODEL = "qwen-plus"
     DEEPSEEK_API_BASE = "https://api.deepseek.com"
     DEEPSEEK_MODEL = "deepseek-chat"
+
+    MIMO_API_BASE = "https://token-plan-cn.xiaomimimo.com/v1"
+    MIMO_MODEL = "mimo-v2.5-pro"
     
     @classmethod
     def validate(cls):
         """验证配置"""
         errors = []
         
-        if not cls.QWEN_API_KEY and not cls.DEEPSEEK_API_KEY:
-            errors.append("未设置 QWEN_API_KEY 或 DEEPSEEK_API_KEY")
+        if not cls.QWEN_API_KEY and not cls.DEEPSEEK_API_KEY and not cls.MIMO_API_KEY:
+            errors.append("未设置 QWEN_API_KEY、DEEPSEEK_API_KEY 或 MIMO_API_KEY")
         
         urls = cls.get_rss_urls()
         if not urls:
