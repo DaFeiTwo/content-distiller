@@ -3,6 +3,8 @@ feedparser==6.0.11
 
 # HTTP 请求
 requests==2.31.0
+# 伪装浏览器 TLS 指纹，用于绕过部分 RSS 服务的 WAF/Cloudflare 拦截
+curl_cffi>=0.7.0
 
 # 命令行工具
 click==8.1.7
@@ -13,6 +15,8 @@ python-dotenv==1.0.1
 
 # AI SDK
 openai==1.30.1
+# httpx 新版本（>=0.28）不兼容 openai 1.30.1，会报 'proxies' 参数错误
+httpx==0.27.2
 
 # Token 计数
 tiktoken==0.7.0

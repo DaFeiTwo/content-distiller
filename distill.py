@@ -84,7 +84,8 @@ def main(limit: int, model: str, no_cache: bool, clear_cache: bool):
         else:
             fetcher = RSSFetcher()
             articles = fetcher.fetch_all()
-            if cache:
+            # 只在真的拿到文章时才写缓存，避免把"失败"当成"成功"缓存下来
+            if cache and articles:
                 cache.save_articles(articles)
         
         if not articles:
